@@ -18,7 +18,7 @@ depends_dev="kdecoration-dev kjobwidgets-dev kcmutils-dev kscreenlocker-dev bree
 			kdeclarative-dev kactivities-dev qt5-qtsensors-dev"
 makedepends="$depends_dev extra-cmake-modules qt5-qttools-dev kdoctools-dev libxkbcommon-dev
 			libepoxy-dev libinput-dev xcb-util-cursor-dev libdrm-dev eudev-dev xcb-util-wm-dev
-			android-headers-7.1 libhybris-dev"
+			android-headers-7.1 libhybris-dev libhybris-7.1"
 source="https://download.kde.org/stable/plasma/${pkgver}/${pkgname}-${pkgver}.tar.xz
 		0001-Revert-udev-Only-handle-devices-from-the-current-sea.patch
         0002-Revert-libinput-connection-Don-t-hardcode-seat0-anym.patch
@@ -35,10 +35,13 @@ _tmppkgdir="$srcdir/tmpinstall"
 
 build() {
 	cd "$builddir"
+
+	# Make sure KWin can find android-headers
 	mkdir pkgconfig
 	ln -s /usr/lib/pkgconfig/android-headers-7.1.pc pkgconfig/android-headers.pc
 	export PKG_CONFIG_PATH="$builddir/pkgconfig"
 
+	# Compile KWin
 	cmake \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -47,6 +50,7 @@ build() {
 		-DLIBC_IS_GLIBC=0
 	SKIP_AUTOMOC=main.cpp make
 
+	# Build HWComposer backend against different Android headers
 	for _ver in $_vers; do
 		msg "building $pkgname-hwcomposer-$_ver"
 
