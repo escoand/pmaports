@@ -1,0 +1,13 @@
+diff --git a/libngf-qt.pro b/libngf-qt.pro
+index 85b0b11..ce51ef0 100644
+--- a/libngf-qt.pro
++++ b/libngf-qt.pro
+@@ -3,7 +3,7 @@ isEmpty(PREFIX) {
+     PREFIX = /usr/local
+ }
+ TEMPLATE = subdirs
+-SUBDIRS += src declarative tests
++SUBDIRS += src declarative
+ 
+ # No need to build this, but if you want then 'qmake EXAMPLE=1 && make'
+ count(EXAMPLE, 1) {

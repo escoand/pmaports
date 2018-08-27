@@ -1,0 +1,27 @@
+# Contributor: Bart Ribbers <bribbers@disroot.org>
+pkgname=asteroid-launcher
+pkgver=2.3.0
+pkgrel=0
+_commit="da9faba98582cce27c81fefde1efb313942275b4"
+pkgdesc="Launcher for Asteroid"
+url="http://www.asteroidos.org/"
+arch="all"
+license="GPL2"
+depends=""
+makedepends="qt5-qtbase qt5-qttools-dev qt5-qttools qt5-qtdeclarative-dev lipstick"
+subpackages=""
+source="https://github.com/AsteroidOS/$pkgname/archive/$_commit.tar.gz"
+builddir="$srcdir/$pkgname-$_commit"
+
+build(){
+	cd "$builddir"
+	qmake-qt5
+	make
+}
+
+package() {
+	cd "$builddir"
+#	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="b2e99d39d339f6ae22a50955ea9e68761d2ed1c5140a09a43cb06e35b768204f773e03d064830a0d93eea0bc61b7904c771567da87bcc1233809eca30ebb2580  da9faba98582cce27c81fefde1efb313942275b4.tar.gz"

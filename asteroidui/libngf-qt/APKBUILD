@@ -1,0 +1,37 @@
+# Contributor: Bart Ribbers <bribbers@disroot.org>
+pkgname=libngf-qt
+pkgver=0.25
+pkgrel=0
+_commit="68bf907ce226ec3294fe36cbb4541f8fb07500c7"
+pkgdesc="Mers libngf"
+url="https://git.merproject.org/mer-core/${pkgname}"
+arch="all"
+license="LGPL"
+depends=""
+depends_dev="qt5-qtbase-dev qt5-qtdeclarative-dev"
+makedepends="$depends_dev"
+subpackages="$pkgname-dev"
+source="https://git.merproject.org/mer-core/$pkgname/-/archive/$_commit/$pkgname-$_commit.tar.gz
+	remove_tests.patch"
+options="!check" # Broken, patched out as they are installed into /opt which is not allowed
+builddir="$srcdir/$pkgname-$_commit"
+
+
+build(){
+	cd "$builddir"
+	qmake-qt5 PREFIX=/usr TESTS=false
+	make
+}
+
+check() {
+	cd "$builddir"
+	make check
+}
+
+package() {
+	cd "$builddir"
+	make INSTALL_ROOT="$pkgdir" install
+}
+
+sha512sums="16ca71032bafe90b48f293bb8e7a8d4fcdc671413aaf8419eb1911c12ff5bc3fd02806d5277eec659174cda5b0ab05b3de7cc7f647a28f1f33466beddd2b4abb  libngf-qt-68bf907ce226ec3294fe36cbb4541f8fb07500c7.tar.gz
+c3f66a8d38ecaefb5c08c870b215b2d9e953e743f63dc8f0c8e935833deaf808b90b93d1f8716d8f7d18dc999a3af0fb3b250d5d0f92d05827ca467e36b1c9f7  remove_tests.patch"

@@ -1,0 +1,29 @@
+# Contributor: Bart Ribbers <bribbers@disroot.org>
+pkgname=lipstick
+pkgver=0.25
+pkgrel=0
+_commit="a7665fe507ad52c639a44a2299a90e2f19dcd7d2"
+pkgdesc="Nokias Lipstick"
+url="https://git.merproject.org/mer-core/lipstick"
+arch="all"
+license="LGPL"
+depends=""
+depends_dev="qt5-qtbase-dev qt5-qtdeclarative-dev qt5-qtsensors-dev qt5-qtwayland-dev mlite-dev"
+makedepends="$depends_dev doxygen graphviz qt5-qttools-dev"
+source="https://github.com/asteroidos/$pkgname/archive/$_commit.tar.gz
+	no_systemd.patch"
+builddir="$srcdir/$pkgname-$_commit"
+
+build(){
+	cd "$builddir"
+	qmake-qt5
+	make
+}
+
+package() {
+	cd "$builddir"
+#	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="d4f81b0d4bac4a36cebec1721f0f3232f235401e699f69af51f6e3f7fc0e034d30f726bfc59a525de8059803fbe10ce0cbbab3850068a0cab6493c0799daeb2a  a7665fe507ad52c639a44a2299a90e2f19dcd7d2.tar.gz
+88de5354a998c80a30d26a373f3df3b68321e37a03cce613ff7f8e0a4b50b94892ffbc6c9f4fc13c856851d729035311edf7613d75836e3d139c43d3d18c666a  no_systemd.patch"

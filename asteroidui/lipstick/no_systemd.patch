@@ -1,0 +1,51 @@
+diff --git a/rpm/lipstick-qt5.spec b/rpm/lipstick-qt5.spec
+index ec54648..7557bb1 100644
+--- a/rpm/lipstick-qt5.spec
++++ b/rpm/lipstick-qt5.spec
+@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(dbus-glib-1)
+ BuildRequires:  pkgconfig(libresourceqt5)
+ BuildRequires:  pkgconfig(ngf-qt5)
+ BuildRequires:  pkgconfig(contextkit-statefs) >= 0.2.7
+-BuildRequires:  pkgconfig(systemd)
+ BuildRequires:  pkgconfig(wayland-server)
+ BuildRequires:  pkgconfig(usb-moded-qt5) >= 1.1
+ BuildRequires:  qt5-qttools-linguist
+diff --git a/src/homeapplication.cpp b/src/homeapplication.cpp
+index 758e00b..f50bd7b 100644
+--- a/src/homeapplication.cpp
++++ b/src/homeapplication.cpp
+@@ -21,7 +21,7 @@
+ #include <QTranslator>
+ #include <QDebug>
+ #include <QEvent>
+-#include <systemd/sd-daemon.h>
++//#include <systemd/sd-daemon.h>
+ 
+ #include "notifications/notificationmanager.h"
+ #include "notifications/notificationpreviewpresenter.h"
+@@ -175,9 +175,9 @@ void HomeApplication::sendStartupNotifications()
+     systemBus.send(homeReadySignal);
+ 
+     /* Let systemd know that we are initialized */
+-    if (arguments().indexOf("--systemd") >= 0) {
+-        sd_notify(0, "READY=1");
+-    }
++//    if (arguments().indexOf("--systemd") >= 0) {
++//        sd_notify(0, "READY=1");
++//    }
+ 
+     /* Let timed know that the UI is up */
+     systemBus.call(QDBusMessage::createSignal("/com/nokia/startup/signal", "com.nokia.startup.signal", "desktop_visible"), QDBus::NoBlock);
+diff --git a/src/src.pro b/src/src.pro
+index 7779616..7f35932 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -140,7 +140,7 @@ SOURCES += \
+ 
+ CONFIG += link_pkgconfig mobility qt warn_on depend_includepath qmake_cache target_qt
+ CONFIG -= link_prl
+-PKGCONFIG += mlite5 mce keepalive dbus-1 dbus-glib-1 libresourceqt5 ngf-qt5 Qt5SystemInfo libsystemd contextkit-statefs dsme_dbus_if thermalmanager_dbus_if usb-moded-qt5 egl
++PKGCONFIG += mlite5 mce keepalive dbus-1 dbus-glib-1 libresourceqt5 ngf-qt5 Qt5SystemInfo contextkit-statefs dsme_dbus_if thermalmanager_dbus_if usb-moded-qt5 egl
+ 
+ LIBS += -lrt
+ 

@@ -1,0 +1,25 @@
+pkgname=mlite
+pkgver=0.2.23
+pkgrel=0
+pkgdesc="Useful classes originating from MeeGo Touch"
+url="https://git.merproject.org/mer-core/mlite"
+arch="all"
+license="LGPL-2.1"
+depends=""
+depends_dev="qt5-qtbase-dev dconf-dev"
+makedepends="$depends_dev qt5-qttools-dev git"
+subpackages="$pkgname-dev"
+source="https://git.merproject.org/mer-core/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+
+build(){
+	cd "$builddir"
+	qmake-qt5
+	make
+}
+
+package() {
+	cd "$builddir"
+	make INSTALL_ROOT="$pkgdir" install
+}
+
+sha512sums="a62f054d29d0c3bcd82ba3b4b46fc6f677d926c3fd9beb42aba23f99f2d3d75f12bde41e4f87bc27309e6a85d685c87551ca0b1faee50746adba7ce85767baf2  mlite-0.2.23.tar.gz"

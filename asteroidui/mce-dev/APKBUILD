@@ -1,0 +1,48 @@
+pkgname=mce-dev
+pkgver=1.22.0
+pkgrel=0
+pkgdesc="Mers mce-dev"
+url="https://git.merproject.org/mer-core/lipstick"
+arch="all"
+license="LGPL"
+depends=""
+makedepends="qt5-qtbase qt5-qttools-dev qt5-qttools qt5-qtbase-dev qt5-qtdeclarative-dev qt5-qtxmlpatterns-dev doxygen qt5-qtquickcontrols qt5-qtwayland"
+subpackages="$pkgname-dev"
+_hash="a5ced91829abf5ca8ca82f9faa2710f5ffd08d1e"
+source="mce-dev-$_hash-${_hash}.tar.gz::https://git.merproject.org/mer-core/mce-dev/repository/archive.tar.gz?ref=${_hash} make_mode_fix.patch"
+builddir="$srcdir/mce-dev-$_hash-${_hash}"
+
+prepare(){
+	cd $builddir
+	# first apply patches in specified order
+	for i in $source; do
+		case $i in
+		*.patch)
+			msg "Applying $i..."
+			if ! patch -s -p1 -N -i "$srcdir"/$i; then
+				echo $i >>failed
+				_patch_failed=1
+			fi
+			;;
+		esac
+	done
+
+	if ! [ -z "$_patch_failed" ]; then
+		error "The following patches failed:"
+		cat failed
+		return 1
+	fi
+}
+
+build(){
+	cd $builddir
+	make
+}
+
+package() {
+	cd $builddir
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="52f0ed52d58156893b07e5464dc58d4f53e14e638ea28825ac7f87fe86cc69f2732bcb3cfafb4dba0a69810f08fead9b0f16568f9c4ccc47cd509f06b8c0974d  mce-dev-a5ced91829abf5ca8ca82f9faa2710f5ffd08d1e-a5ced91829abf5ca8ca82f9faa2710f5ffd08d1e.tar.gz
+90ca55705eb900b46ffe949d46960ebad35b83033b8b264952be7133473b78577c6ee6e4ec0596202114388108211e0f2c5864cef2b10a1eeb6a6917a17a1b33  make_mode_fix.patch"
