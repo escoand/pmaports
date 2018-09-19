@@ -18,7 +18,10 @@ build() {
 	cd "$builddir"
 	cmake \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DAASDK_INCLUDE_DIRS="/usr/include" \
+		-DAASDK_LIBRARIES="/usr/lib/libaasdk.so" \
+		-DAASDK_PROTO_LIBRARIES="/usr/lib/libaasdk_proto.so"
 	make
 }
 
