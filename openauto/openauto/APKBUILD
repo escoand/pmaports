@@ -10,7 +10,10 @@ arch="all"
 license="none"
 depends=""
 makedepends="cmake qt5-qtbase-dev qt5-qtmultimedia-dev qt5-qtconnectivity-dev boost-dev protobuf-dev rtaudio-dev libusb-dev aasdk-dev aasdk"
-source="$pkgname-$_commit.tar.gz::https://github.com/f1xpl/$pkgname/archive/$_commit.tar.gz"
+source="
+	$pkgname-$_commit.tar.gz::https://github.com/f1xpl/$pkgname/archive/$_commit.tar.gz
+	libusb-errorcode.patch
+"
 builddir="$srcdir/$pkgname-$_commit"
 options="!check"
 
@@ -33,4 +36,5 @@ package() {
 	mv "$builddir"/bin/* "$pkgdir"/usr/bin
 }
 
-sha512sums="cc3b03a0679e4dd37d7ef84b87365720fc5b80be054fcc3c7d4bffabda3126db3849e854e06c1d144146319c4c4aabac6a444777eee2b60765e05a1e99bc7ec9  openauto-6dc394c11f1a0b09ccb0c5ca90012cd185baebca.tar.gz"
+sha512sums="cc3b03a0679e4dd37d7ef84b87365720fc5b80be054fcc3c7d4bffabda3126db3849e854e06c1d144146319c4c4aabac6a444777eee2b60765e05a1e99bc7ec9  openauto-6dc394c11f1a0b09ccb0c5ca90012cd185baebca.tar.gz
+982d85baf18e246c4bb3b79322fa7609f93a40ae0e4764526fcae9fa60267bed308520c7019f635c33af386194514072453aa4e9b93d7b2ff044c3c2f21a115a  libusb-errorcode.patch"
