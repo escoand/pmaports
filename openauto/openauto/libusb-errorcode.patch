@@ -7,11 +7,11 @@ index 2aa9dcb..abfd276 100644
  {
      libusb_context* usbContext;
 -    if(libusb_init(&usbContext) != 0)
-+    int err = libusb_init(&usbContext);
-+    if(err != 0)
++    int ret = libusb_init(&usbContext);
++    if(ret != 0)
      {
 -        OPENAUTO_LOG(error) << "[OpenAuto] libusb init failed.";
-+        OPENAUTO_LOG(error) << "[OpenAuto] libusb init failed. (" << err << ")";
++        OPENAUTO_LOG(error) << "[OpenAuto] libusb init failed. (" << ret << ")";
          return 1;
      }
  
