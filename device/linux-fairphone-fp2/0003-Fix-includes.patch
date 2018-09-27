@@ -1,7 +1,7 @@
 From 9f6591cedda666e560b0ecfc1200ce4c5c0e41d6 Mon Sep 17 00:00:00 2001
 From: Luca Weiss <luca@z3ntu.xyz>
 Date: Sun, 19 Aug 2018 17:31:58 +0200
-Subject: [PATCH 3/6] Fix includes
+Subject: [PATCH 3/7] Fix includes
 
 ---
  arch/arm/mach-msm/smd_init_dt.c | 2 +-
@@ -35,5 +35,5 @@ index 3e0df21c3bb4..2b6579c762cf 100755
  
  
 -- 
-2.18.0
+2.19.0
 

@@ -1,7 +1,7 @@
 From 56c8e4686c63557b7040c0509fa34fa7b71cdd68 Mon Sep 17 00:00:00 2001
 From: Luca Weiss <luca@z3ntu.xyz>
 Date: Sun, 19 Aug 2018 17:32:47 +0200
-Subject: [PATCH 4/6] msm: fix trace
+Subject: [PATCH 4/7] msm: fix trace
 
 ---
  drivers/video/msm/mdss/mdss_mdp_trace.h | 2 +-
@@ -21,5 +21,5 @@ index 33fe3a4b7937..730b7ff5a85d 100644
  #define TRACE_INCLUDE_FILE mdss_mdp_trace
  
 -- 
-2.18.0
+2.19.0
 

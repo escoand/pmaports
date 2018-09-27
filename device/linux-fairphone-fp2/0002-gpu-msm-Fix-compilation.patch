@@ -1,7 +1,7 @@
 From 33f9e6039c4f1780b9b457fb70b2817dea56fa35 Mon Sep 17 00:00:00 2001
 From: Chet Kener <Cl3Kener@gmail.com>
 Date: Tue, 21 Oct 2014 18:41:36 -0400
-Subject: [PATCH 2/6] gpu: msm: Fix compilation
+Subject: [PATCH 2/7] gpu: msm: Fix compilation
 
 * These need to be static to avoid these errors:
 
@@ -39,5 +39,5 @@ index f755b226b078..deb568e3446f 100644
  {
  	struct kgsl_device *device = mmu->device;
 -- 
-2.18.0
+2.19.0
 

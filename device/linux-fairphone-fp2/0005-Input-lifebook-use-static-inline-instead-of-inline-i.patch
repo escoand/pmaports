@@ -1,7 +1,7 @@
 From 1bbea76e31078276fae96dd09eddc8a8aa8d027e Mon Sep 17 00:00:00 2001
 From: Chen Gang <gang.chen.5i5j@gmail.com>
 Date: Sun, 9 Nov 2014 13:31:11 -0800
-Subject: [PATCH 5/6] Input: lifebook - use "static inline" instead of "inline"
+Subject: [PATCH 5/7] Input: lifebook - use "static inline" instead of "inline"
  in lifebook.h
 
 For functions defined in header files we should use static inline rather
@@ -42,5 +42,5 @@ index 4c4326c6f504..0baf02a70a99 100644
  	return -ENOSYS;
  }
 -- 
-2.18.0
+2.19.0
 

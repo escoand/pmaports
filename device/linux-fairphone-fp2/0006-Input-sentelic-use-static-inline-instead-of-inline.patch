@@ -1,7 +1,7 @@
 From 8aced5520b9c1ec1f23e004aae59a2a88ad74764 Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Fri, 22 May 2015 09:56:29 -0700
-Subject: [PATCH 6/6] Input: sentelic - use "static inline" instead of "inline"
+Subject: [PATCH 6/7] Input: sentelic - use "static inline" instead of "inline"
 
 gcc-5 defaults to gnu11 which used c99 inline semantics in c99 'inline' is
 not externally visible unlike gnu89, therefore we use 'static inline' which
@@ -32,5 +32,5 @@ index 334de19e5ddb..a821628244b9 100644
  	return -ENOSYS;
  }
 -- 
-2.18.0
+2.19.0
 
