@@ -1,6 +1,6 @@
 pkgname=kmscube
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Simple demo for testing kernel modesetting support"
 url="https://cgit.freedesktop.org/mesa/kmscube/"
 arch="all"
