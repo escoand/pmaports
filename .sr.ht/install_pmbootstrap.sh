@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Config: pmbootstrap tag (or branch)
-tag="9a4d99872a445741df53bca29e05a1b4d14b9a29"
+tag="srht-test"
 
 # Get download URL and pmaports path
 url="https://gitlab.com/postmarketOS/pmbootstrap/-/archive/$tag/pmbootstrap-$tag.tar.bz2"
