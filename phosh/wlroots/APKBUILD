@@ -1,7 +1,6 @@
 pkgname=wlroots
-pkgver=0_git20180916
-pkgrel=0
-_commit="83397e69992aa407e3eae559fb41a991f1a68752"
+pkgver=0.2
+pkgrel=2
 pkgdesc="Pluggable, composable modules for building a Wayland compositor, with Purism hacks to support Phosh"
 arch="all"
 url="https://github.com/swaywm/wlroots"
@@ -10,22 +9,22 @@ depends="wayland wayland-protocols xorg-server-xwayland"
 depends_dev="libinput-dev xcb-util-image-dev"
 makedepends="$depends_dev meson ninja mesa-dev eudev-dev pixman-dev wayland-dev libxkbcommon-dev"
 subpackages="$pkgname-dev"
-source="$pkgname-$pkgver.tar.gz::https://github.com/swaywm/wlroots/archive/$_commit.tar.gz"
+source="$pkgname-$pkgver.tar.gz::https://github.com/swaywm/$pkgname/archive/$pkgver.tar.gz"
 options="suid"
-builddir="$srcdir/$pkgname-$_commit"
+builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
 	cd "$builddir"
-	meson . _build --prefix=/usr -Denable-xwayland=true
-	ninja -C _build
+	meson build --prefix=/usr -Denable-xwayland=true
+	ninja -C build
 }
 
 package() {
 	cd "$builddir"
 	
-	DESTDIR="$pkgdir/" ninja -C _build install
+	DESTDIR="$pkgdir" ninja -C build install
 
-	install -D -m755 _build/rootston/rootston "$pkgdir"/usr/bin/rootston
+	install -D -m755 build/rootston/rootston "$pkgdir"/usr/bin/rootston
 	chmod u+s "$pkgdir"/usr/bin/rootston
 }
-sha512sums="593a4d87f8e5684c3b325b227869728b1388b93be80cf23e0af3316d2684ddbec8916d836a5350096088a6c39ce0a4aa6b70f7059fd1857ac38718a77b45fd71  wlroots-0_git20180916.tar.gz"
+sha512sums="b7727b29ed7e5188d5fa6099687f8e6f48b6b3f17f7a6e136956ad6b607054595de3779118bffd4b9730115eaca2f00c2d30d52f4915b2753a749432ec0c3f2a  wlroots-0.2.tar.gz"
