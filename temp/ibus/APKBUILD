@@ -1,13 +1,13 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 pkgname=ibus
 pkgver=1.5.19
-pkgrel=0
+pkgrel=1
 pkgdesc="Next Generation Input Bus for Linux"
 arch="all"
 url="https://github.com/ibus/ibus/wiki"
 license="LGPL-2.1"
 depends_dev="gnome-common gtk+2.0-dev gtk+3.0-dev dconf-dev libnotify-dev iso-codes-dev gobject-introspection-dev"
-makedepends="$depends_dev autoconf automake intltool gtk-doc libtool python3-dev unicode-emoji cldr-emoji-annotation unicode-character-database gconf coreutils dbus-x11 vala glib-dev "
+makedepends="$depends_dev autoconf automake intltool gtk-doc libtool python3-dev python unicode-emoji cldr-emoji-annotation unicode-character-database gconf coreutils dbus-x11 vala glib-dev "
 source="$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
 triggers="$pkgname.trigger=/etc/dconf/db"
 subpackages="lib$pkgname $pkgname-dev $pkgname-doc $pkgname-lang"
@@ -23,9 +23,10 @@ build() {
 		--disable-static \
 		--enable-dconf \
 		--enable-wayland \
-		--enable-gtk-doc \
+		--disable-gtk-doc \
 		--disable-memconf \
 		--enable-ui \
+		--disable-emoji-dict \
 		--enable-python-library \
 		--with-python=python3 \
 		--with-ucd-dir=/usr/share/unicode/
