@@ -1,7 +1,7 @@
 pkgname=phosh
-pkgver=0_git20180917
+pkgver=0_git20181218
 pkgrel=0
-_commit="f291f85e97e2e1ac116112ada495cc7b80a6ae2c"
+_commit="ade8659b0448025c1ad9bf8ebba4b1a697e280ab"
 pkgdesc="A shell PoC for the Librem5"
 arch="all"
 url="https://source.puri.sm/Librem5/phosh"
@@ -28,4 +28,4 @@ package() {
 	cd "$builddir"
 	DESTDIR="$pkgdir/" ninja -C _build install
 }
-sha512sums="d4f18ab441a6b1bde38eaf3b68b3640b0c45fed64e60291ef4b151de73ca09d855e153ca8d1cff172b1f39ab106a4ebd32aac6eb085408af33cfece3414816bf  phosh-0_git20180917.tar.gz"
+sha512sums="780d33ea03d242d9fe63c721410724a0a91f8e7b39b07e037287a319a71f104a152b9140ef1574b557e047e3790504d5403d665ace385f71eb459cf27471ebd3  phosh-0_git20181218.tar.gz"
