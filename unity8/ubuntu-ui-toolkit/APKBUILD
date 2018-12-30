@@ -15,6 +15,8 @@ source="$pkgname-$_commit.tar.gz::https://github.com/ubports/$pkgname/archive/$_
 	0001-Adapt-to-QtPim-API-changes.patch
 	0002-Fix-Missing-sentinel-in-function-call-warning.patch
 	0003-Add-option-to-disable-building-of-docs.patch
+	0004-Make-it-compile-with-Qt-5.12.patch
+	0005-Adjust-for-removed-QTest-waitForEvents-method.patch
 	replace-bash-for-sh.patch"
 subpackages="$pkgname-dev $pkgname-lang"
 options="!check" # Complaining about a non-existing file
@@ -22,7 +24,7 @@ builddir="$srcdir/$pkgname-$_commit"
 
 prepare() {
 	default_prepare
-	
+
 	# Lets warnings be warnings and not errors
 	sed -i 's|warning_clean|warn_off|' "$builddir"/.qmake.conf
 }
@@ -44,7 +46,9 @@ package() {
 }
 
 sha512sums="9f2d4707db936eb262893b226ffda71c886dcb2a99cb3c2e169f12f80ba04836717322a43f28919a75f43c57c8a6b1ebf52cd74cca50af0d8a657708faf81502  ubuntu-ui-toolkit-2f541e8b5e509ad40cd8dc70d634434e7ab8fc42.tar.gz
-016b0673cb0b1cdb7ef9632c414521f1522d1d14b22d7d6e11381b26cd849d340dba16c8656f4bff76defbde7e6d68245c3814e944e9d0aa05388009d9c06136  0001-Adapt-to-QtPim-API-changes.patch
-c5a8d341ad2abbc44745b8f358cd0e65bc781d94f5024e0ce6831bd6bd6dbf945bb5e57ba254c7e6c0b69c71c8fee169028dc7c99d868f15c6b568850d85d3cd  0002-Fix-Missing-sentinel-in-function-call-warning.patch
-fba64441decd59434beaf44be1c1324768e53724aab827cfb28b1efcd42b35a3ab18edc10d0b73a187ffe7c3a4da96e21b074adcd4d5c07bda5bfe473d413642  0003-Add-option-to-disable-building-of-docs.patch
+d293464a334fdbdf6a61700002a692d2e101803b8aa46effd004c84341fca993f4a17fda55ba22eb1bd628a400e54b8f1e6c4cb1f690f49405e6f3f3122f1475  0001-Adapt-to-QtPim-API-changes.patch
+7dbdc3d2d3de42820cd628f59f959c18f26189e3c690cacbefdc51c4913186d954137b0997da206a2004ba837fb7f6bdce64c9ab4fe013044ce857507bb8e7d6  0002-Fix-Missing-sentinel-in-function-call-warning.patch
+13109d75e1922a9b750e0d528d120d85a164be045f2db728a5cdf637eebc8aca0633ca7d4e766c71f57a1ee10892f36841ad3351a2db72289059ae7d00e43da1  0003-Add-option-to-disable-building-of-docs.patch
+5b5c00bd365ee4068e2e0622a0ce31c7b67b0c6cf136b0d717dd68ac9559bc2d9c54e1e0c9106fa1d6e3438de974fa8b44c023888fe87bc1d1ed584023184eba  0004-Make-it-compile-with-Qt-5.12.patch
+402f529c6eba4e384ba0c7789fd6c23757b278befa24f9b8b23a0d11b6a1ffe4abab28d188e77f606708a2e23a89bf4ec0c04e65e51efb82b448d4257b276381  0005-Adjust-for-removed-QTest-waitForEvents-method.patch
 e01567f2426f78b0862e7b09cd99cabf3d885b600592e6a4f0e07dc077fae2ba8dd1d2deba3bb89d31171a90db6de909281664bcbc7736b9432f2bc0b26544e1  replace-bash-for-sh.patch"

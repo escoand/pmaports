@@ -1,7 +1,7 @@
-From 15f75fc4a5caf634e004736f50ff7239141cb608 Mon Sep 17 00:00:00 2001
+From 49fe9d5aaef907d309710577699d788b53bde15c Mon Sep 17 00:00:00 2001
 From: Luca Weiss <luca@z3ntu.xyz>
 Date: Wed, 3 Oct 2018 17:07:51 +0200
-Subject: [PATCH 2/3] Fix "Missing sentinel in function call" warning
+Subject: [PATCH 2/5] Fix "Missing sentinel in function call" warning
 
 ---
  src/UbuntuToolkit/ucurihandler.cpp | 2 +-
@@ -21,5 +21,5 @@ index ad752f80c..c9f0566c9 100644
      nih_free(path);
  
 -- 
-2.19.1
+2.20.1
 

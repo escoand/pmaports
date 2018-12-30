@@ -1,7 +1,7 @@
-From ec38dcd6caedf852c9ae18fc65b2884923f2d4c0 Mon Sep 17 00:00:00 2001
+From 1091e7af92eba4bba90632e9ea3386ae68dbeba2 Mon Sep 17 00:00:00 2001
 From: Luca Weiss <luca@z3ntu.xyz>
 Date: Wed, 3 Oct 2018 17:08:08 +0200
-Subject: [PATCH 3/3] Add option to disable building of docs
+Subject: [PATCH 3/5] Add option to disable building of docs
 
 ---
  ubuntu-sdk.pro | 5 ++++-
@@ -24,5 +24,5 @@ index 4cd2e9cfe..b5ff7e0db 100644
  sub_tests.CONFIG -= no_default_target
  sub_tests.CONFIG -= no_default_install
 -- 
-2.19.1
+2.20.1
 

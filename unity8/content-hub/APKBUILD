@@ -10,21 +10,23 @@ arch=all
 license="GPL-3.0 LGPL-3.0"
 depends=""
 depends_dev="qt5-qtdeclarative-dev ubuntu-app-launch-dev gsettings-qt-dev libnih-dev ubuntu-download-manager-dev libnotify-dev libapparmor-dev ubuntu-ui-toolkit-dev"
-makedepends="$depends_dev cmake libapparmor"
+makedepends="$depends_dev cmake cmake-extras libapparmor"
+checkdepends="gtest-dev gmock dbus-test-runner"
+options="!check" # 92% tests passed, 1 tests failed out of 12 (xfvb-run script is missing, see https://bugs.alpinelinux.org/issues/9617)
 source="$pkgname-$_commit.tar.gz::https://github.com/ubports/$pkgname/archive/$_commit.tar.gz
-		qmlplugindump.patch"
+	0001-Use-qmlplugindump-qt5.patch
+	0002-Migrate-to-cmake-extras.patch"
 subpackages="$pkgname-dev $pkgname-lang"
 builddir="$srcdir/$pkgname-$_commit"
 
 prepare() {
 	default_prepare
-	mkdir "$builddir"/build
-
 	# Don't build tests
 	truncate -s 0 "$builddir"/tests/CMakeLists.txt
 }
 
 build() {
+	mkdir "$builddir"/build
 	cd "$builddir"/build
 
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" ..
@@ -32,7 +34,7 @@ build() {
 }
 
 check() {
-	cd "$builddir"/build
+	cd "$builddir"/build/tests
 	CTEST_OUTPUT_ON_FAILURE=TRUE ctest
 }
 
@@ -41,4 +43,5 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 sha512sums="c252cf298159e676436d77e3d0ea330ac99e6cf4d3b9bffdde49ad25583abe4c3e6f114c6019b0eea5c7248a0498382df264149cc58de7263492c6b3cab9d3fb  content-hub-3156112daa14fa0ea49fdc0cd916aa74eff8d304.tar.gz
-d708b55205a72db5ae28dc14de06100d1067cc500e0195eaf9940acd46b11c07562022caf55076a08045337631ffd8ffd0af93c05c166cb8dfba73679e699c48  qmlplugindump.patch"
+c2a87070eb5851146faf22820720263b37e2107e0cb7f9916734650e1303508984d7bd36216c6fb54044d97b8af9c1737c2b01a585d51b46116c7a0a697f402a  0001-Use-qmlplugindump-qt5.patch
+cbf571222147608d11e9c30bb8532470155260d6390f129103db60d830934656fb3a2c4b200d506be2a54524105a1d8cccd4c4db8001fa3b76f65587f93f7e84  0002-Migrate-to-cmake-extras.patch"

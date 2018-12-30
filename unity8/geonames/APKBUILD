@@ -14,7 +14,7 @@ makedepends="$depends_dev gtk-doc autoconf automake libtool"
 # See https://github.com/ubports/geonames/issues/1
 source="$pkgname-$_commit.tar.gz::http://repo.ubports.com/pool/xenial/main/g/geonames/geonames_0.3+ubports1+0~20180310073020.3~1.gbp5d77e8.tar.gz"
 subpackages="$pkgname-dev $pkgname-lang"
-options="!check"
+options="!check" # Tests fail
 builddir="$srcdir/source"
 
 prepare() {
@@ -29,7 +29,7 @@ build() {
 
 check() {
 	cd "$builddir"
-	CTEST_OUTPUT_ON_FAILURE=TRUE ctest
+	make check
 }
 
 package() {
