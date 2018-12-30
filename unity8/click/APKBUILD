@@ -1,19 +1,19 @@
 # Contributor:
 # Maintainer:
 pkgname=click
-pkgver=0_git20180108
-_commit=28b9c13e89f9957f02b6b8cddb1e7aa123b5b6e2
+pkgver=0_git20181011
+_commit=13e465ed0ab99ce2b80f2989a5677336e637e519
 pkgrel=0
 pkgdesc="Click is a simplified packaging format"
 url="https://github.com/ubports/click"
 arch="all"
 license="GPL-3.0"
 depends=""
-depends_dev="json-glib-dev libgee-dev gobject-introspection-dev"
-makedepends="$depends_dev cmake intltool vala gobject-introspection autoconf libtool automake"
+depends_dev="libgee-dev gobject-introspection-dev"
+makedepends="$depends_dev cmake intltool vala gobject-introspection autoconf libtool automake json-glib-dev"
 subpackages="$pkgname-dev $pkgname-doc"
 source="$pkgname-$_commit.tar.gz::https://github.com/ubports/$pkgname/archive/$_commit.tar.gz
-        musl_fixes.patch"
+        0001-open64-fopen64-don-t-exist-on-musl.patch" # https://github.com/ubports/click/pull/5
 builddir="$srcdir/$pkgname-$_commit"
 options="!check" # Needs dpkg
 
@@ -34,5 +34,5 @@ package() {
 	make DESTDIR="$pkgdir/" PYTHON_INSTALL_FLAGS="--root=$pkgdir/" install
 }
 
-sha512sums="c0b9553afe2943916d7a83451c6e76af791166f82aa0e6bc872bfbfa47f5c328a2ab4ec8a446b00613e1522671ebef1b2f6444d0fd002fb1ac83bd7897f5e613  click-28b9c13e89f9957f02b6b8cddb1e7aa123b5b6e2.tar.gz
-e96c02220e9e9ac1f03f28769e2c52971bfe474112d84d7172f9578c6037dc5d5d84c9dc78337977e1d3bcde810e26b565aca17baed99b7288ea230c12a78f4c  musl_fixes.patch"
+sha512sums="65b259ab53829b418ca1a1a66236891f210901605c663c47711aa2371179671fa9f1986c934b8496f30b159ab3ba00528cc5ee2fe989c73026c3423350a80a25  click-13e465ed0ab99ce2b80f2989a5677336e637e519.tar.gz
+755190b5b62640271ed969d4a7f3c3ceb56eca45f0f2c293c22346eee97b762bd5a9620f4de4472d04d81db0a5df41187a99a4d7e7070869f235f66f0adeb3a7  0001-open64-fopen64-don-t-exist-on-musl.patch"

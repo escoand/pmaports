@@ -1,7 +1,7 @@
-From 86b6fb90069fc22d648d310037dac48505c91838 Mon Sep 17 00:00:00 2001
+From 0e3381dc788670849751dcb01b4257b56095b334 Mon Sep 17 00:00:00 2001
 From: Luca Weiss <luca@z3ntu.xyz>
 Date: Thu, 27 Sep 2018 23:31:06 +0200
-Subject: [PATCH 1/7] 0001-formats-locale-property.patch
+Subject: [PATCH 1/4] 0001-formats-locale-property.patch
 
 ---
  data/org.freedesktop.Accounts.User.xml | 45 +++++++++++++++
@@ -374,5 +374,5 @@ index 802d07a..e0dc56a 100644
          user->location = NULL;
          user->password_mode = PASSWORD_MODE_REGULAR;
 -- 
-2.19.0
+2.20.1
 

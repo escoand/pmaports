@@ -1,7 +1,7 @@
-From 8e1c1c46a8eb876636e03d1001b675726d663e15 Mon Sep 17 00:00:00 2001
+From a1b09a0d0243ac3a7fbd26c176a274dd3716f391 Mon Sep 17 00:00:00 2001
 From: Luca Weiss <luca@z3ntu.xyz>
 Date: Thu, 27 Sep 2018 23:32:49 +0200
-Subject: [PATCH 4/7] 0016-add-input-sources-support.patch
+Subject: [PATCH 4/4] 0016-add-input-sources-support.patch
 
 ---
  data/org.freedesktop.Accounts.User.xml |  45 ++++++
@@ -566,5 +566,5 @@ index c32971e..17772f8 100644
          user->location = NULL;
          user->password_mode = PASSWORD_MODE_REGULAR;
 -- 
-2.19.0
+2.20.1
 

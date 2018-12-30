@@ -1,7 +1,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
-# Maintainer: Bart Ribbers <bribbers@disroot.org> 
+# Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=capnproto
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=0
 pkgdesc="Cap'n Proto serialization/RPC system"
 arch="all"
@@ -25,4 +25,4 @@ package() {
 
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums="cd35aec18175b28149cf39ccbf360f8023d2762d04c0d6fdfbd7789ca26eac6228dfec6a414f48ff78aec4aad4c3d9d5f143a6a59dd86c16f653fc538e64b58e  capnproto-0.6.1.tar.gz"
+sha512sums="9f8fb5753155798fcf9377a87f984a54d9fc5157c41aa11cd94108a773ca22d6e6952657e2d8079c9806f7de06f316c94957329fa52dbab6207aaa3b52348f04  capnproto-0.7.0.tar.gz"

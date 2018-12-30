@@ -1,12 +1,21 @@
+From 9b952e758b7ac63b45d33c320159f4d644f5d1da Mon Sep 17 00:00:00 2001
+From: Luca Weiss <luca@z3ntu.xyz>
+Date: Sun, 30 Dec 2018 20:01:04 +0100
+Subject: [PATCH] open64 & fopen64 don't exist on musl
+
+---
+ preload/clickpreload.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
 diff --git a/preload/clickpreload.c b/preload/clickpreload.c
-index 9446dce..0cb3d0c 100644
+index 9446dce..ff492fa 100644
 --- a/preload/clickpreload.c
 +++ b/preload/clickpreload.c
 @@ -40,7 +40,9 @@ static int (*libc_execvp) (const char *, char * const []) = (void *) 0;
  static int (*libc_fchmod) (int, mode_t) = (void *) 0;
  static int (*libc_fchown) (int, uid_t, gid_t) = (void *) 0;
  static FILE *(*libc_fopen) (const char *, const char *) = (void *) 0;
-+#if 0
++#ifdef __GLIBC__
  static FILE *(*libc_fopen64) (const char *, const char *) = (void *) 0;
 +#endif
  static struct group *(*libc_getgrnam) (const char *) = (void *) 0;
@@ -16,7 +25,7 @@ index 9446dce..0cb3d0c 100644
  static int (*libc_mkdir) (const char *, mode_t) = (void *) 0;
  static int (*libc_mkfifo) (const char *, mode_t) = (void *) 0;
  static int (*libc_open) (const char *, int, mode_t) = (void *) 0;
-+#if 0
++#ifdef __GLIBC__
  static int (*libc_open64) (const char *, int, mode_t) = (void *) 0;
 +#endif
  static int (*libc_symlink) (const char *, const char *) = (void *) 0;
@@ -26,7 +35,7 @@ index 9446dce..0cb3d0c 100644
      GET_NEXT_SYMBOL (fchmod);
      GET_NEXT_SYMBOL (fchown);
      GET_NEXT_SYMBOL (fopen);
-+#if 0
++#ifdef __GLIBC__
      GET_NEXT_SYMBOL (fopen64);
 +#endif
      GET_NEXT_SYMBOL (getgrnam);
@@ -36,7 +45,7 @@ index 9446dce..0cb3d0c 100644
      GET_NEXT_SYMBOL (mkdir);
      GET_NEXT_SYMBOL (mkfifo);
      GET_NEXT_SYMBOL (open);
-+#if 0
++#ifdef __GLIBC__
      GET_NEXT_SYMBOL (open64);
 +#endif
      GET_NEXT_SYMBOL (symlink);
@@ -46,7 +55,7 @@ index 9446dce..0cb3d0c 100644
      return (*libc_fopen) (pathname, mode);
  }
  
-+#if 0
++#ifdef __GLIBC__
  FILE *fopen64 (const char *pathname, const char *mode)
  {
      int for_reading =
@@ -62,7 +71,7 @@ index 9446dce..0cb3d0c 100644
      return ret;
  }
  
-+#if 0
++#ifdef __GLIBC__
  int open64 (const char *pathname, int flags, ...)
  {
      int for_writing = ((flags & O_WRONLY) || (flags & O_RDWR));
@@ -74,3 +83,6 @@ index 9446dce..0cb3d0c 100644
  
  int __xmknod (int ver, const char *pathname, mode_t mode, dev_t *dev)
  {
+-- 
+2.20.1
+

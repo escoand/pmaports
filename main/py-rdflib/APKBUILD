@@ -6,7 +6,7 @@ pkgver=4.2.2
 pkgrel=0
 pkgdesc="A Python library for working with RDF, a simple yet powerful language for representing information"
 arch=noarch
-url="http://rdflib.net/"
+url="https://rdflib.readthedocs.org/"
 license='BSD'
 depends="py-isodate py2-six"
 makedepends="py-setuptools py3-setuptools"
@@ -40,7 +40,7 @@ package() {
 	install -Dm644  LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	cd "$pkgdir/usr/bin"
-	for i in * ; do 
+	for i in * ; do
 		mv $i $i-py2
 	done
 }
@@ -49,13 +49,13 @@ _py() {
 	pkgdesc="$pkgdesc (for python)"
 	depends="python2 py-isodate py2-six"
 	install_if="$pkgname=$pkgver-r$pkgrel python2"
-    
+
 	cd "$builddir"
 	pytho2n setup.py install --root="$subpkgdir" --optimize=1
 	install -Dm644  LICENSE "$subpkgdir/usr/share/licenses/$pkgname/LICENSE"
-	
+
 	cd "$subpkgdir/usr/bin"
-	for i in * ; do 
+	for i in * ; do
 		mv $i $i-py2
 	done
 }

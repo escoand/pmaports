@@ -12,12 +12,12 @@ depends_dev="sqlite-dev gobject-introspection-dev xapian-core-dev telepathy-glib
 makedepends="$depends_dev autoconf automake gettext gettext-dev libtool python3 vala git raptor2 py-rdflib"
 source="$pkgname-$pkgver.tar.gz::https://gitlab.freedesktop.org/$pkgname/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
 subpackages="$pkgname-dev $pkgname-doc"
-options="!check"
 builddir="$srcdir/$pkgname-v$pkgver"
+options="!check" # Needs D-Bus server, see https://gitlab.freedesktop.org/zeitgeist/zeitgeist/issues/4
 
 prepare() {
 	default_prepare
-    
+
 	cd "$builddir"
 	NOCONFIGURE=1 ./autogen.sh
 }
@@ -31,7 +31,7 @@ build() {
 		--enable-fts
 
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    
+
 	make
 }
 

@@ -1,7 +1,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=umockdev
-pkgver=0.12
+pkgver=0.12.1
 pkgrel=0
 pkgdesc="Record/mock hardware devices for bug reports and regression tests"
 arch="all"
@@ -10,10 +10,9 @@ license="LGPL-2.1"
 depends=""
 depends_dev="eudev-dev libgudev-dev"
 makedepends="$depends_dev autoconf automake libtool gtk-doc vala linux-headers bash"
-source="$pkgname-$pkgver.tar.gz::https://github.com/martinpitt/$pkgname/archive/$pkgver.tar.gz
-		fix_armhf.patch"
+source="$pkgname-$pkgver.tar.gz::https://github.com/martinpitt/$pkgname/archive/$pkgver.tar.gz"
 subpackages="$pkgname-dev $pkgname-doc"
-options="!check" # Broken right now due to missing mount points
+options="!check" # See https://gitlab.com/postmarketOS/pmbootstrap/issues/1650
 
 build() {
 	cd "$builddir"
@@ -32,5 +31,4 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-sha512sums="2defc2a5d1293e16015f1cd1a95f8f113d5305eac72f4f2c6adc07638d2085d1458fb932597e8751390ed9b841dcfa41457ad23a914ba7927109a09a88db4546  umockdev-0.12.tar.gz
-dcfae9df9131dae2d3bfe2a5b624a7894b07b5889d268d45b0ebc6598c3b0815d687cd748062041afd9a1f5b5cbb248bd0f4ae7d6c729f11f1ae5d14476ab48f  fix_armhf.patch"
+sha512sums="0680efd60cdb10f48ed1aff3650b9a8345cb1b5f352751335830cef4d366c7cfd1c7c5b35864c078f2aa899965ef73bffcc4ae00029df80ecec5eb09c9505267  umockdev-0.12.1.tar.gz"

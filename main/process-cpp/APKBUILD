@@ -1,24 +1,21 @@
 # Contributor:
 # Maintainer:
 pkgname=process-cpp
-pkgver=3.0.1
+pkgver=2.0.1
 pkgrel=0
+_commit=2923b597f6fc5b49133be8c4f2ba3cbaacdb9540
 pkgdesc="C++11 library for handling processes"
 url="https://launchpad.net/process-cpp"
 arch="all"
 license="LGPL3"
 depends="boost properties-cpp"
-makedepends="boost-dev cmake doxygen properties-cpp-dev libexecinfo-dev musl-dev"
+makedepends="boost-dev cmake cmake-extras doxygen properties-cpp-dev libexecinfo-dev musl-dev"
+checkdepends="gtest-dev gmock"
 install=""
 subpackages="$pkgname-dev"
-source="https://launchpad.net/ubuntu/+archive/primary/+files/process-cpp_3.0.1.orig.tar.gz musl-fixes.patch"
-builddir="$srcdir/${pkgname}-${pkgver}"
-
-prepare() {
-	cd "$builddir"
-	truncate -s 0 tests/CMakeLists.txt
-	default_prepare
-}
+source="https://github.com/lib-cpp/process-cpp/archive/$_commit.tar.gz
+	0001-Musl-libc-fixes.patch" # https://github.com/lib-cpp/process-cpp/pull/1
+builddir="$srcdir/$pkgname-$_commit"
 
 build() {
 	mkdir "$builddir"/build
@@ -31,10 +28,15 @@ build() {
 	make
 }
 
+check() {
+	cd "$builddir"/build
+	make test
+}
+
 package() {
 	cd "$builddir"/build
 	make DESTDIR="$pkgdir/" install
 }
 
-sha512sums="73f2d4501164ae9da7b2901e1a2ae3c55e55639f7579a7e15b64ebd1c6087cc49971f0c0f4b7c2eed4380a29dd59f03119edf95d5034066ce40e7467b82b3111  process-cpp_3.0.1.orig.tar.gz
-2e9d9252b46f4e686125bf96ab93d947619969de34b50b83e614f6fbff2ea476e40b807e2cb64ffe4b1cc23a44af6fd894aaf4de904d4440937c6058895e8532  musl-fixes.patch"
+sha512sums="8787f9bbfb157c30c2a6ff072735344104f609ebae3385b41539fa7b24aa45eff5465ae8edf0479030ef7061256e7f1f7354621b172fa6ba196d59d275f2fad6  2923b597f6fc5b49133be8c4f2ba3cbaacdb9540.tar.gz
+97b2a54e52b8f6a1839cfcdc6fb401768d731bacbe6bc920b511777e72806d844cded9ad9222b570e46cdbf692def363128c4cb4e2e291fcd4f66c081ad0c5cd  0001-Musl-libc-fixes.patch"

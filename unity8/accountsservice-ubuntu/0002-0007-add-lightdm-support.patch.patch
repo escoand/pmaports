@@ -1,7 +1,7 @@
-From 387f6b1b38cecf1d6001cc5f673401ae9f33a25a Mon Sep 17 00:00:00 2001
+From 5f8f807b2a9a22d203d948127b24e5790b6b64b9 Mon Sep 17 00:00:00 2001
 From: Luca Weiss <luca@z3ntu.xyz>
 Date: Thu, 27 Sep 2018 23:31:06 +0200
-Subject: [PATCH 2/7] 0007-add-lightdm-support.patch
+Subject: [PATCH 2/4] 0007-add-lightdm-support.patch
 
 ---
  src/daemon.c | 143 +++++++++++++++++++++++++++++++++++++++++++++++----
@@ -186,5 +186,5 @@ index 312394a..ae59e50 100644
  daemon_local_set_automatic_login (Daemon    *daemon,
                                    User      *user,
 -- 
-2.19.0
+2.20.1
 

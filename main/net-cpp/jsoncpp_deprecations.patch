@@ -1,0 +1,300 @@
+diff --git a/tests/http_client_load_test.cpp b/tests/http_client_load_test.cpp
+index 79d125b..3ece75b 100644
+--- a/tests/http_client_load_test.cpp
++++ b/tests/http_client_load_test.cpp
+@@ -134,7 +134,7 @@ TEST_F(HttpClientLoadTest, async_head_request_for_existing_resource_succeeds)
+     {
+         // All endpoint data on httpbin.org is JSON encoded.
+         json::Value root;
+-        json::Reader reader;
++        json::CharReader reader;
+ 
+         // We expect the query to complete successfully
+         EXPECT_EQ(core::net::http::Status::ok, response.status);
+@@ -159,7 +159,7 @@ TEST_F(HttpClientLoadTest, async_get_request_for_existing_resource_succeeds)
+     {
+         // All endpoint data on httpbin.org is JSON encoded.
+         json::Value root;
+-        json::Reader reader;
++        json::CharReader reader;
+ 
+         // We expect the query to complete successfully
+         EXPECT_EQ(core::net::http::Status::ok, response.status);
+@@ -191,7 +191,7 @@ TEST_F(HttpClientLoadTest, async_post_request_for_existing_resource_succeeds)
+     {
+         // All endpoint data on httpbin.org is JSON encoded.
+         json::Value root;
+-        json::Reader reader;
++        json::CharReader reader;
+ 
+         // We expect the query to complete successfully
+         EXPECT_EQ(core::net::http::Status::ok, response.status);
+diff --git a/tests/http_client_test.cpp b/tests/http_client_test.cpp
+index dd37d4f..b34ffbb 100644
+--- a/tests/http_client_test.cpp
++++ b/tests/http_client_test.cpp
+@@ -144,7 +144,7 @@ TEST(HttpClient, get_request_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter);
+@@ -174,7 +174,7 @@ TEST(HttpClient, get_request_with_custom_headers_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter);
+@@ -207,7 +207,7 @@ TEST(HttpClient, empty_header_values_are_handled_correctly)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter);
+@@ -240,7 +240,7 @@ TEST(HttpClient, get_request_for_existing_resource_guarded_by_basic_auth_succeed
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter);
+@@ -274,7 +274,7 @@ TEST(HttpClient, DISABLED_get_request_for_existing_resource_guarded_by_digest_au
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter);
+@@ -323,7 +323,7 @@ TEST(HttpClient, async_get_request_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We expect the query to complete successfully
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+@@ -362,7 +362,7 @@ TEST(HttpClient, async_get_request_for_existing_resource_guarded_by_basic_authen
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     std::promise<core::net::http::Response> promise;
+     auto future = promise.get_future();
+@@ -416,7 +416,7 @@ TEST(HttpClient, post_request_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter);
+@@ -451,7 +451,7 @@ TEST(HttpClient, post_form_request_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+     EXPECT_TRUE(reader.parse(response.body, root));
+@@ -476,7 +476,7 @@ TEST(HttpClient, post_request_for_file_with_large_chunk_succeeds)
+                                 size);
+ 
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     auto response = request->execute(default_progress_reporter);
+ 
+@@ -498,7 +498,7 @@ TEST(HttpClient, put_request_for_existing_resource_succeeds)
+                                value.size());
+ 
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     auto response = request->execute(default_progress_reporter);
+ 
+@@ -525,7 +525,7 @@ TEST(HttpClient, put_request_for_file_with_large_chunk_succeeds)
+                                size);
+ 
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     auto response = request->execute(default_progress_reporter);
+ 
+@@ -542,7 +542,7 @@ TEST(HttpClient, del_request_for_existing_resource_succeeds)
+     auto request = client->del(http::Request::Configuration::from_uri_as_string(url));
+ 
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     auto response = request->execute(default_progress_reporter);
+ 
+@@ -647,7 +647,7 @@ TEST(HttpClient, DISABLED_search_for_location_on_mozillas_location_service_succe
+ 
+     auto response = request->execute(default_progress_reporter);
+ 
+-    json::Reader reader;
++    json::CharReader reader;
+     json::Value result;
+ 
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+diff --git a/tests/http_streaming_client_test.cpp b/tests/http_streaming_client_test.cpp
+index 68ad100..5548daf 100644
+--- a/tests/http_streaming_client_test.cpp
++++ b/tests/http_streaming_client_test.cpp
+@@ -156,7 +156,7 @@ TEST(StreamingHttpClient, get_request_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+@@ -191,7 +191,7 @@ TEST(StreamingHttpClient, get_request_with_custom_headers_for_existing_resource_
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+@@ -229,7 +229,7 @@ TEST(StreamingHttpClient, empty_header_values_are_handled_correctly)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+@@ -267,7 +267,7 @@ TEST(StreamingHttpClient, get_request_for_existing_resource_guarded_by_basic_aut
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+@@ -306,7 +306,7 @@ TEST(StreamingHttpClient, DISABLED_get_request_for_existing_resource_guarded_by_
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+@@ -361,7 +361,7 @@ TEST(StreamingHttpClient, async_get_request_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We expect the query to complete successfully
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+@@ -405,7 +405,7 @@ TEST(StreamingHttpClient, async_get_request_for_existing_resource_guarded_by_bas
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     std::promise<core::net::http::Response> promise;
+     auto future = promise.get_future();
+@@ -465,7 +465,7 @@ TEST(StreamingHttpClient, post_request_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     // We finally execute the query synchronously and story the response.
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+@@ -505,7 +505,7 @@ TEST(StreamingHttpClient, post_form_request_for_existing_resource_succeeds)
+ 
+     // All endpoint data on httpbin.org is JSON encoded.
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+     EXPECT_TRUE(reader.parse(response.body, root));
+@@ -536,7 +536,7 @@ TEST(StreamingHttpClient, post_request_for_file_with_large_chunk_succeeds)
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+   
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+     EXPECT_TRUE(reader.parse(response.body, root));
+@@ -569,7 +569,7 @@ TEST(StreamingHttpClient, post_request_for_file_with_large_chunk_with_read_callb
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+   
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+     EXPECT_TRUE(reader.parse(response.body, root));
+@@ -596,7 +596,7 @@ TEST(StreamingHttpClient, put_request_for_existing_resource_succeeds)
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+ 
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+ 
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+     EXPECT_TRUE(reader.parse(response.body, root));
+@@ -627,7 +627,7 @@ TEST(StreamingHttpClient, put_request_for_file_with_large_chunk_succeeds)
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+   
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+   
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+     EXPECT_TRUE(reader.parse(response.body, root));
+@@ -660,7 +660,7 @@ TEST(StreamingHttpClient, put_request_for_file_with_large_chunk_with_read_callba
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+   
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+   
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+     EXPECT_TRUE(reader.parse(response.body, root));
+@@ -682,7 +682,7 @@ TEST(StreamingHttpClient, del_request_for_existing_resource_succeeds)
+     auto response = request->execute(default_progress_reporter, dh->to_data_handler());
+ 
+     json::Value root;
+-    json::Reader reader;
++    json::CharReader reader;
+   
+     EXPECT_EQ(core::net::http::Status::ok, response.status);
+     EXPECT_TRUE(reader.parse(response.body, root));

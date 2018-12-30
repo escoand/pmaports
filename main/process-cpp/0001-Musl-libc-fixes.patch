@@ -1,11 +1,23 @@
+From 9e25c80e0e45c21dedc785019be95c0bbff4174d Mon Sep 17 00:00:00 2001
+From: Luca Weiss <luca@z3ntu.xyz>
+Date: Sun, 30 Dec 2018 18:01:32 +0100
+Subject: [PATCH] Musl libc fixes
+
+---
+ include/core/posix/standard_stream.h | 5 +++++
+ src/CMakeLists.txt                   | 1 +
+ src/core/posix/signal.cpp            | 2 +-
+ 3 files changed, 7 insertions(+), 1 deletion(-)
+
 diff --git a/include/core/posix/standard_stream.h b/include/core/posix/standard_stream.h
-index f50a9b7..4a67a80 100644
+index f50a9b7..1927fa8 100644
 --- a/include/core/posix/standard_stream.h
 +++ b/include/core/posix/standard_stream.h
-@@ -23,6 +23,10 @@
+@@ -23,6 +23,11 @@
  
  #include <cstdint>
  
++// Musl uses "#define stdin (stdin)", so the enum declaration fails with a syntax error
 +#undef stdin
 +#undef stdout
 +#undef stderr
@@ -38,3 +50,6 @@ index 9c80f21..ce8bbc1 100644
                  {
                      if (has(static_cast<core::posix::Signal>(signal_info[i].ssi_signo)))
                      {
+-- 
+2.20.1
+

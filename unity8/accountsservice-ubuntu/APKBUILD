@@ -15,16 +15,15 @@ depends_dev="glib-dev gobject-introspection-dev polkit-dev"
 makedepends="$depends_dev intltool gnome-doc-utils"
 provides="$_pkgname=$pkgver"
 subpackages="$pkgname-dev $pkgname-doc $pkgname-lang"
+# Issues about "Ubuntu-specific" patches:
+# https://gitlab.freedesktop.org/accountsservice/accountsservice/issues/22
+# https://gitlab.freedesktop.org/accountsservice/accountsservice/issues/52
 source="http://www.freedesktop.org/software/accountsservice/accountsservice-$pkgver.tar.xz
 	musl-fgetspent_r.patch
 	0001-0001-formats-locale-property.patch.patch
 	0002-0007-add-lightdm-support.patch.patch
 	0003-0011-add-background-file-support.patch.patch
-	0004-0016-add-input-sources-support.patch.patch
-	0005-0001-Move-cache-cleanup-out-into-a-common-function-a.patch
-	0006-0002-On-startup-clean-out-the-data-of-removed-users..patch
-	0007-1002-dont-override-standardoutput.patch.patch
-	"
+	0004-0016-add-input-sources-support.patch.patch"
 builddir="$srcdir"/$_pkgname-$pkgver
 build() {
 	cd "$builddir"
@@ -55,10 +54,7 @@ package() {
 
 sha512sums="09975f9fa03a3177d923de6d6f6e6acfffeb2ff4924c45eaac78c994c16974427c8e936a87034747ba494d2bb3df6e8a92ff44db387761b06e06e311d7cf105a  accountsservice-0.6.45.tar.xz
 469392beca8f5941eafaa193c4fcb0472770ee4183ce520416a1b5d6abafe0e201990eb74d06bfbd9e20af08e55aff5f0031f267083f6c6879f0fe4e5028103c  musl-fgetspent_r.patch
-33297ead95c6d58db46a8d4c32531678e53befa6a7d972465153ef270f0b673450fbd2a09b0c6cc0df9acce5d89e9b4aa2de06870a3bdba41dacc35f76935b02  0001-0001-formats-locale-property.patch.patch
-6ec609476fe58bab35e592c5c6ab5accf26e50fb23218b67d6ddd2b24859ad8c084404a2132148d3f47cbc957e73c55a7593885e4b277c18047b19d046b5ef27  0002-0007-add-lightdm-support.patch.patch
-a540e63370707bc4b607e8a0d734f20f890d0c4d467b36248b5bb26b6eed07ffeb09871868768d7c702858d5e4cd4482849d8ae148cc51c1eda3ff6f36fe0c1d  0003-0011-add-background-file-support.patch.patch
-dd6a3418a58308e6ee84fc13a5603b0a16f7238781ded93b2168b58524c087594e743137701fd6a3133c51d22470f397344099631f555954deaeb5805dbe8b41  0004-0016-add-input-sources-support.patch.patch
-b970f38a88459bf6c8c19914d272666adb20940d9735049ed49545d300e5a8f39b15e025559c8e2b2156b5a4e0c69bd258c878e8389b5291a8126bc834645dad  0005-0001-Move-cache-cleanup-out-into-a-common-function-a.patch
-477b3f826bf84ff639d29597cd1a99bf090611d1f159e16acf04e78c159ffeaad1ce35c9a7a9dff6070b44465583ccf1b7b20b5dd501b7bc1af732dceef9c9ad  0006-0002-On-startup-clean-out-the-data-of-removed-users..patch
-0cfd10584ac999e15d6ebf6a3b311ada29f809957f355eaff101c8268e9bbf334687e69c7c07a64530eb2307e43ba6a5cfcafb7d9b472a5c18afbff5492a4466  0007-1002-dont-override-standardoutput.patch.patch"
+ad924e29432c92fbf8cdfab7e1d023f67502003f54ab1f0db3d264a7e71a9aececa65ef4c4de110df3f9892f8f90bb50018115b61513e883ac6797ad8c6dd4f4  0001-0001-formats-locale-property.patch.patch
+3d91eebc4e877a73dd9fad802d8473a8f4275b82d2ac79fc1d0191262794b95cdf50edd6ea76e9bfc946c523b9d88e8cabc90a3b00211b404565c8884cd62653  0002-0007-add-lightdm-support.patch.patch
+8baf966e83e74efb3b5fe75722320953c481bb2e7803bbece539e3ffb82ce2879fcebfa4512f59978f852dbf7e62a21fca5a8cd668fd94549d39796730b61518  0003-0011-add-background-file-support.patch.patch
+9cfe41e017e0025d3f474b07b6f7599728b7ff8a0eecbbf629d035b6542f9af1b61469eb38f1ca295999a5baeb69424ed39b56703ac5919c9946eab6135a9eb4  0004-0016-add-input-sources-support.patch.patch"

@@ -1,7 +1,7 @@
-From 3c4da6a431222e6be9ac989f278fcda9af52e1a0 Mon Sep 17 00:00:00 2001
+From bf5c35a6ffec43378f7a7483642e866b5efbcfdb Mon Sep 17 00:00:00 2001
 From: Luca Weiss <luca@z3ntu.xyz>
 Date: Thu, 27 Sep 2018 23:31:07 +0200
-Subject: [PATCH 3/7] 0011-add-background-file-support.patch
+Subject: [PATCH 3/4] 0011-add-background-file-support.patch
 
 ---
  data/org.freedesktop.Accounts.User.xml | 45 ++++++++++++
@@ -365,5 +365,5 @@ index e0dc56a..c32971e 100644
          user->default_icon_file = NULL;
          user->email = NULL;
 -- 
-2.19.0
+2.20.1
 

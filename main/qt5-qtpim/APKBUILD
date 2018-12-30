@@ -1,8 +1,8 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=qt5-qtpim
-pkgver=0_git20180804
-_commit=b18329691336b6276407db8eee2ecd196aa8dddc
+pkgver=0_git20181121
+_commit=380605ef048372a40587f0231ba00df146bc070e
 pkgrel=0
 arch="all"
 url='http://qt-project.org/'
@@ -39,4 +39,4 @@ package() {
 	install -d "$pkgdir"/usr/share/licenses
 	ln -s /usr/share/licenses/qt5-base "$pkgdir"/usr/share/licenses/$pkgname
 }
-sha512sums="aaa9b725c54ecd75c80ba8720d1b198350dc822bb084e238187f8ed29b63964cd96432fdd997b35270ca5bcfd2195a597e43747d85b18cb40bf8c644d5177641  qt5-qtpim-b18329691336b6276407db8eee2ecd196aa8dddc.tar.gz"
+sha512sums="dadd6484b34540b5f47f39b1a09e404384b1a22d8c757a56f9ce1efbf047a1ece556fb3b1fe32dfe54c82985023776d182420f55576c9d87f1267c94b144ad77  qt5-qtpim-380605ef048372a40587f0231ba00df146bc070e.tar.gz"
