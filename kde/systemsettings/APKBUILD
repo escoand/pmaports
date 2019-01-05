@@ -1,7 +1,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=systemsettings
-pkgver=5.13.5
+pkgver=5.14.4
 pkgrel=0
 pkgdesc="Plasma system manager for hardware, software, and workspaces"
 arch="all"
@@ -34,4 +34,4 @@ package() {
 	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
-sha512sums="cbe254dfff2d9637626586ad4df5da581f01acc16b24883269cc4c11a1ddd6d9dd3fb3e45680729f3b1197ddc30e185f7a2fdb2199f9f696e8eb6ea72ea88d79  systemsettings-5.13.5.tar.xz"
+sha512sums="1cac862546b5cccef9a269132212a5dcfe370cba5b95f3cd8d5d64333c07e8813a55fe39d6d6d6d1fdfe0f05cd725535e864defd592dcbbde289fb80db670bfd  systemsettings-5.14.4.tar.xz"

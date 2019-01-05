@@ -1,7 +1,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=kde-cli-tools
-pkgver=5.13.5
+pkgver=5.14.4
 pkgrel=0
 pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system"
 arch="all"
@@ -40,4 +40,4 @@ package() {
 	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
-sha512sums="88aaa5c5a70da7d7f43f9d1b01d61d68c60e87942556955927cfb8655a8f6219d5220aff0c1a937f00444b3d03877d539bf544488a432108bf74434fc89566d7  kde-cli-tools-5.13.5.tar.xz"
+sha512sums="34f10c9d8d7dc2d9e8e5a46a5ba3c41922877aa3c00fec10371521d8fa8eeebd9d8fa8b9c23527c0e2ccb419b39623de0166bde534b4cb9434e2b12cac98898a  kde-cli-tools-5.14.4.tar.xz"

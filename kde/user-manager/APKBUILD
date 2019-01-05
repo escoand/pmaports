@@ -1,7 +1,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=user-manager
-pkgver=5.13.5
+pkgver=5.14.4
 pkgrel=0
 pkgdesc="A simple system settings module to manage the users of your system"
 arch="all"
@@ -32,4 +32,4 @@ package() {
 	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
-sha512sums="e18902843b7b6079ad712996cc90850c2e662c710b67e1d54dbec7db9194b1c7c640b6ced0bdf51c1f0974ba24edbff691cad347689e202e4478681a194e5172  user-manager-5.13.5.tar.xz"
+sha512sums="0d943e9505d07ab27c20d6b9bd714e0bf5bc2626d29bfde81ccaee6062a093be15f670f0fc523f560aa614277d03033e40426c0058be8e7a982422ba0cf6cf23  user-manager-5.14.4.tar.xz"

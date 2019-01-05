@@ -1,7 +1,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=plasma-desktop
-pkgver=5.13.5
+pkgver=5.14.4
 pkgrel=0
 pkgdesc='KDE Plasma Desktop'
 arch="all"
@@ -48,4 +48,4 @@ knetattach() {
 	cd "$builddir"/knetattach
 	make DESTDIR="$subpkgdir" install
 }
-sha512sums="3dd8f27e0127f7568aeee3871ce2f0732267ef50f9659a4a2715eca65bdf8cc5cbd2ca5e39a261cbbf0d1127c9c153f1c2d279729b636184353c6fbb699c4383  plasma-desktop-5.13.5.tar.xz"
+sha512sums="7028d609ea05560cd07f5668ed620910f39ccd82d7f87e9f3f35321014271e3a1b5a3ffccef836fbf383fde40e7529011b5c48522c403ff84f4a605887c3cca4  plasma-desktop-5.14.4.tar.xz"
