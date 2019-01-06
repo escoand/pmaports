@@ -5,7 +5,7 @@ pkgver=18.08.1
 pkgrel=0
 pkgdesc="Widgets for Baloo"
 arch="all"
-url="https://community.kde.org/Frameworks"
+url="https://community.kde.org/Baloo"
 license="LGPL-2.1"
 depends=""
 depends_dev="qt5-qtbase-dev kconfig-dev kio-dev ki18n-dev kfilemetadata-dev baloo-dev"
@@ -29,6 +29,6 @@ check() {
 
 package() {
 	cd "$builddir"
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="$pkgdir" install
 }
 sha512sums="72f89b74e2dbaeff226f156923cd92ce54b8c57ad3ef7283505910d17aed6188648ef0fb5b9c4d1256803c8931f4104999e8603b0f4abdb41c682550c542dc89  baloo-widgets-18.08.1.tar.xz"
