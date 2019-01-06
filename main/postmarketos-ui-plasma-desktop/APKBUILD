@@ -8,7 +8,8 @@ license="GPL-3.0+"
 depends="sddm plasma-desktop systemsettings breeze-icons postmarketos-demos
 	kscreen elisa pulseaudio pulseaudio-utils powerdevil polkit-kde-agent
 	kwayland-integration postmarketos-artwork-wallpapers konsole plasma-nm
-	plasma-pa qt5-qtvirtualkeyboard dolphin user-manager kde-gtk-config"
+	plasma-pa qt5-qtvirtualkeyboard dolphin user-manager kde-gtk-config
+	breeze-gtk"
 source="qtlogging.ini org.kde.phone.homescreen.js"
 install="$pkgname.post-install"
 options="!check"
