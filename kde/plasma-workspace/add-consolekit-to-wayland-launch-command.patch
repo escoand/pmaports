@@ -1,0 +1,11 @@
+diff --git a/plasmawayland.desktop.cmake b/plasmawayland.desktop.cmake
+index 5d7db306..483334a5 100644
+--- a/plasmawayland.desktop.cmake
++++ b/plasmawayland.desktop.cmake
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Exec=dbus-run-session ${CMAKE_INSTALL_FULL_BINDIR}/startplasmacompositor
++Exec=ck-launch-session dbus-run-session ${CMAKE_INSTALL_FULL_BINDIR}/startplasmacompositor
+ TryExec=${CMAKE_INSTALL_FULL_BINDIR}/startplasmacompositor
+ DesktopNames=KDE
+ Name=Plasma

@@ -10,7 +10,7 @@ depends="sddm plasma-desktop systemsettings breeze-icons postmarketos-demos
 	kwayland-integration postmarketos-artwork-wallpapers konsole plasma-nm
 	plasma-pa qt5-qtvirtualkeyboard dolphin user-manager kde-gtk-config
 	breeze-gtk"
-source="qtlogging.ini org.kde.phone.homescreen.js"
+source="qtlogging.ini"
 install="$pkgname.post-install"
 options="!check"
 

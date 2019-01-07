@@ -2,7 +2,7 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=plasma-workspace
 pkgver=5.14.4
-pkgrel=0
+pkgrel=1
 pkgdesc="KDE Plasma Workspace"
 arch="all"
 url="https://www.kde.org/workspaces/plasmadesktop/"
@@ -22,7 +22,8 @@ depends_dev="krunner-dev kdesignerplugin-dev kdesignerplugin qt5-qtwayland-dev q
 	phonon-qt5-dev kwayland-dev baloo-dev prison-dev"
 makedepends="$depends_dev extra-cmake-modules kdoctools-dev gpsd iso-codes-dev libxtst-dev
 	xcb-util-image-dev libxrender-dev"
-source="https://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
+source="https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz
+	add-consolekit-to-wayland-launch-command.patch"
 subpackages="$pkgname-dev $pkgname-libs $pkgname-doc $pkgname-lang"
 options="!check" # Fails due to requiring running X11
 
@@ -46,4 +47,5 @@ package() {
 
 	install -Dm644 plasmawayland.desktop "$pkgdir"/usr/share/wayland-sessions/plasmawayland.desktop
 }
-sha512sums="017b2b8d52c243072ffd6b7b4a766ed27d055dae36f6cf9d10e4f06748555680b55ebdae6db07a043b18359c391bf294f0bc0e601f26e5cd12b532fffcb07645  plasma-workspace-5.14.4.tar.xz"
+sha512sums="017b2b8d52c243072ffd6b7b4a766ed27d055dae36f6cf9d10e4f06748555680b55ebdae6db07a043b18359c391bf294f0bc0e601f26e5cd12b532fffcb07645  plasma-workspace-5.14.4.tar.xz
+6f4c84232755989180d98fc2bb8482e972262f9eb444c3c6a59da6baeb5b8891c9729f53ab814b780d165229d99671f0232c3e1fd6126c2f164491efe37df7c6  add-consolekit-to-wayland-launch-command.patch"
