@@ -4,7 +4,7 @@ _config="config-${_flavor}.${CARCH}"
 pkgname=linux-${_flavor}
 
 pkgver=4.20.0
-pkgrel=1
+pkgrel=0
 
 arch="aarch64"
 pkgdesc="Kernel close to mainline with extra patches for Allwinner devices"
