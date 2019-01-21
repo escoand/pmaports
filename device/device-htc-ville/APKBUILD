@@ -1,0 +1,23 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname="device-htc-ville"
+pkgdesc="HTC One S"
+pkgver=0.1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="armhf"
+options="!check !archcheck"
+depends="postmarketos-base linux-htc-ville mkbootimg mesa-dri-swrast"
+makedepends="devicepkg-dev"
+source="deviceinfo"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+
+sha512sums="b2da1908a3c84e6a127cc2a24cd78ddc847755cef3b539548c56456016b6246ff2daed67b2720985dee623af9813574b0be684e7601b81436527132b4bd5af02  deviceinfo"
