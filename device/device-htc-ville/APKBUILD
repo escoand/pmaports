@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname="device-htc-ville"
 pkgdesc="HTC One S"
-pkgver=0.1
+pkgver=1
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -9,7 +9,10 @@ arch="armhf"
 options="!check !archcheck"
 depends="postmarketos-base linux-htc-ville mkbootimg mesa-dri-swrast"
 makedepends="devicepkg-dev"
-source="deviceinfo"
+source="
+	deviceinfo
+	initfs-hook.sh
+"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -20,4 +23,5 @@ package() {
 }
 
 
-sha512sums="b2da1908a3c84e6a127cc2a24cd78ddc847755cef3b539548c56456016b6246ff2daed67b2720985dee623af9813574b0be684e7601b81436527132b4bd5af02  deviceinfo"
+sha512sums="675639a62ad76736b73270f8cb5091002ea17b82d34faee178d07c734d707a63881a67eb4a6c8c9673f7769da2bf36591b499794921c5696d4682e1c4f400b44  deviceinfo
+fdf51ee382b5e73fae9f2765d930ad778274ead5e5063b8c6201791f83ecdec10b888261c52de6e29f165e9c5b5a08a3cf715a94af9fdd2820ff42cc82cbd4ee  initfs-hook.sh"
