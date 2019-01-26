@@ -7,12 +7,9 @@ url="https://postmarketos.org"
 license="MIT"
 arch="armhf"
 options="!check !archcheck"
-depends="postmarketos-base linux-htc-ville mkbootimg mesa-dri-swrast"
+depends="postmarketos-base linux-htc-ville mkbootimg mesa-dri-swrast msm-fb-refresher"
 makedepends="devicepkg-dev"
-source="
-	deviceinfo
-	initfs-hook.sh
-"
+source="deviceinfo"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -23,5 +20,4 @@ package() {
 }
 
 
-sha512sums="675639a62ad76736b73270f8cb5091002ea17b82d34faee178d07c734d707a63881a67eb4a6c8c9673f7769da2bf36591b499794921c5696d4682e1c4f400b44  deviceinfo
-fdf51ee382b5e73fae9f2765d930ad778274ead5e5063b8c6201791f83ecdec10b888261c52de6e29f165e9c5b5a08a3cf715a94af9fdd2820ff42cc82cbd4ee  initfs-hook.sh"
+sha512sums="eae3c4526dc64279882977c1cc0fa7b28fe7dae3fac2ac069b3b5ce04b93503cb19a073a8c40413b49e5eb0ab55f87bd2d61007840ffa500425e6f9fd5838d5b  deviceinfo"
